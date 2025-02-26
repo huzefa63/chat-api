@@ -7,13 +7,13 @@ const cors = require('cors');
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: 'chat-app-53.vercel.app',
+    origin: 'https://chat-app-53.vercel.app',
     methods:['GET','POST'],
   },
 });
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors({ origin:'chat-app-53.vercel.app' }));
+app.use(cors({ origin:'https://chat-app-53.vercel.app' }));
 
 io.on('connection',(socket)=>{
     socket.on('newMessage',(message)=>{
