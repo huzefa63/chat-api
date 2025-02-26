@@ -3,19 +3,17 @@ const socketIo = require('socket.io');
 const http = require('http');
 const app = express();
 const cors = require('cors');
-const env = require('dotenv');
-env.config({path:'./.env'});
 
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: process.env.URL,
+    origin: 'chat-app-53.vercel.app',
     methods:['GET','POST'],
   },
 });
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors({ origin: process.env.URL }));
+app.use(cors({ origin:'chat-app-53.vercel.app' }));
 
 io.on('connection',(socket)=>{
     socket.on('newMessage',(message)=>{
